@@ -456,4 +456,32 @@
             // Tailwind ready
             balanceEl.textContent = balance.toFixed(2);
             
-            // Render initi
+// Render initial UI
+            renderRecentBar();
+            renderHistoryList();
+            
+            // Set default bet
+            document.getElementById("bet-input").value = currentBet;
+            document.getElementById("bet-amount-display").textContent = currentBet;
+
+            // Canvas initial draw
+            drawGraph();
+
+            // Shake support
+            enableShake();
+
+            // Keyboard support (N = new round)
+            document.addEventListener("keydown", e => {
+                if (e.key.toLowerCase() === "n" && !isFlying) {
+                    resetForNewRound();
+                    setTimeout(startRound, 100);
+                }
+            });
+
+            console.log("%c✅ Full BC.Game style Crash ready! Tap BET to play. History hidden until you tap 📜", "color:#22c55e; font-size:13px");
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
